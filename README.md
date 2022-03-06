@@ -4,7 +4,7 @@
 
 # Introduction
 
-Implementation of the code used for the submition on the SE&R 2022 Challenge.
+Implementation of the code used for the submition on the SE&R 2022 Challenge. (**GPED-CEIA-UFG** Team)
 
 # TODO
 
