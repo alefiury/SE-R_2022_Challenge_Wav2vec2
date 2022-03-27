@@ -10,4 +10,5 @@ tensorboardX
 torch-audiomentations
 audiomentations
 pydub
+pyctcdecode
 wandb

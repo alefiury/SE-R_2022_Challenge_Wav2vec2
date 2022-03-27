@@ -1,38 +1,26 @@
 # -*- coding: utf-8 -*-
 import os
-import re
 import json
-import random
 import argparse
-import pandas as pd
-
-import torchaudio
-import librosa
-import numpy as np
-
-from shutil import copyfile
-from utils.generic_utils import load_config, load_vocab
-
-from transformers import Wav2Vec2CTCTokenizer
-from transformers import Wav2Vec2FeatureExtractor
-from transformers import Wav2Vec2Processor
-from datasets import load_dataset, load_metric
-from datasets import ClassLabel
-
-import transformers
-from transformers import Wav2Vec2ForCTC
-from transformers import TrainingArguments
-from transformers import Trainer
-from transformers.trainer_utils import get_last_checkpoint
-from transformers import EarlyStoppingCallback
-
-transformers.logging.set_verbosity_info()
 
 import wandb
+import numpy as np
+import transformers
+from shutil import copyfile
+from datasets import load_metric
+from transformers import Trainer
+from transformers import Wav2Vec2ForCTC
+from transformers import TrainingArguments
+from transformers import EarlyStoppingCallback
+from utils.generic_utils import load_config, load_vocab
+from transformers.trainer_utils import get_last_checkpoint
 
+
+transformers.logging.set_verbosity_info()
 wandb.login()
 
 wer_metric = load_metric("wer")
+
 
 def map_data_augmentation(aug_config):
     aug_name = aug_config['name']
