@@ -66,7 +66,7 @@ class Dataset(object):
     def preprocess_datasets(self):
         # remove all invalid characters present in text
         self.normalise_texts()
-        
+
         self.audio_preprocess_and_prepare_dataset()
 
     def initialize_datasets(self):
@@ -105,8 +105,8 @@ class Dataset(object):
             own_dataset = dataset
         else:
             own_dataset = concatenate_datasets([own_dataset, dataset])
-        return own_dataset    
-        
+        return own_dataset
+
     def normalise_texts(self):
         vocab_string = vocab_to_string(self.vocab, self.config.vocab['blank'], self.config.vocab['silence'], self.config.vocab['unk'])
 
@@ -114,7 +114,7 @@ class Dataset(object):
             text = batch[self.text_column].lower()
             text = re.sub("[^{}]".format(vocab_string), " ", text)
             text = re.sub("[ ]+", " ", text)
-            
+
             batch[self.text_column] = text + " "
 
             return batch
@@ -142,7 +142,7 @@ class Dataset(object):
                 batch["speech"] = librosa.resample(np.asarray(batch["speech"]),  batch["sampling_rate"], self.config['sampling_rate'])
                 batch["sampling_rate"] = self.config['sampling_rate']
             return batch
-        
+
         def prepare_dataset(batch):
             try:
                 batch["input_values"] = np.squeeze(self.processor(batch["speech"], sampling_rate=self.config['sampling_rate']).input_values)
@@ -151,7 +151,7 @@ class Dataset(object):
                 batch["length"] = len(batch["labels"])
             except:
                 print("Error during load of audio:", batch["target_text"])
-                
+
             return batch
 
         print("> Load Audios")
@@ -161,7 +161,7 @@ class Dataset(object):
         print("> Resample Audios if necessary")
         self.train_dataset = self.train_dataset.map(resample_audio, num_proc=self.config['num_loader_workers'])
         self.devel_dataset = self.devel_dataset.map(resample_audio, num_proc=self.config['num_loader_workers'])
-        
+
         print("> Prepare dataloader")
         self.train_dataset = self.train_dataset.map(prepare_dataset, remove_columns=self.train_dataset.column_names, num_proc=self.config['num_loader_workers'], batched=False)
         self.devel_dataset = self.devel_dataset.map(prepare_dataset, remove_columns=self.devel_dataset.column_names, num_proc=self.config['num_loader_workers'], batched=False)
@@ -214,7 +214,7 @@ class DataColletor:
                 input_tensor = self.audio_augmentator(np.array(feature["input_values"]), sample_rate=self.sampling_rate).tolist()
             else:
                 input_tensor = feature["input_values"]
-            
+
             # input_tensor = feature["input_values"]
 
             input_features.append({"input_values":input_tensor})

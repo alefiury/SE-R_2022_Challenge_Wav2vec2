@@ -15,13 +15,13 @@ class SentencesToListOfCharacters(tr.AbstractTransform):
         chars = []
         for sentence in inp:
             chars.extend(self.process_string(sentence))
-        
+
         return chars
 
 cer_transform = tr.Compose(
     [
         jiwer.RemoveMultipleSpaces(),
-        jiwer.Strip(), 
+        jiwer.Strip(),
         SentencesToListOfCharacters(), # convert words to chars
         # jiwer.RemoveEmptyStrings()  # remove space strings
     ]
@@ -123,12 +123,12 @@ def save_best_checkpoint(log_dir, model, optimizer, lr_scheduler, scaler, step, 
         best_loss = val_loss
         if early_epochs is not None:
             early_epochs = 0
-        
+
         model_save_path = os.path.join(log_dir, 'pytorch_model.bin')
         # model.save_pretrained(log_dir) # export model with transformers for save the config too
         torch.save(model.state_dict(), model_save_path)
 
-        optimizer_save_path = os.path.join(log_dir, 'optimizer.pt')        
+        optimizer_save_path = os.path.join(log_dir, 'optimizer.pt')
         checkpoint_dict = {
             'optimizer': optimizer.state_dict(),
             'scheduler': lr_scheduler.state_dict(),
@@ -140,7 +140,7 @@ def save_best_checkpoint(log_dir, model, optimizer, lr_scheduler, scaler, step, 
             checkpoint_dict['scaler'] = scaler.state_dict()
 
         torch.save(checkpoint_dict, optimizer_save_path)
-       
+
         print("\n > BEST MODEL ({0:.5f}) saved at {1:}".format(
             val_loss, model_save_path))
     else:
