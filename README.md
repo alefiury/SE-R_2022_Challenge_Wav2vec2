@@ -32,6 +32,26 @@ The model weights with the best results can be found on the [huggingface hub](ht
 
 - Alef Iury Siqueira Ferreira
 
+# Citation
+
+If you use this code for your research, please consider citing:
+
+```
+@proceedings{SePublica2013,
+ booktitle = {Automatic Speech Recognition for Spontaneous and Prepared Speech \& Speech Emotion Recognition in Portuguese},
+ year = 2022,
+ editor = {Ricardo Marcacini and Arnaldo Candido Junior and Edresson Casanova},
+ number = 3175,
+ series = {CEUR Workshop Proceedings},
+ address = {Aachen},
+ issn = {1613-0073},
+ url = {http://ceur-ws.org/Vol-3175},
+ venue = {Virtual Event, Fortaleza, Brazil},
+ eventdate = {2022-03-22},
+ title = {Domain Specific Wav2vec 2.0 Fine-tuning for the SE\&R 2022 Challenge}
+}
+```
+
 # Contact
 
 - e-mail: alef_iury_c.c@discente.ufg.br
