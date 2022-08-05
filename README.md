@@ -8,7 +8,7 @@
 
 # Introduction
 
-This repository presents the code used for the submition on the SE&R 2022 Challenge (**GPED-CEIA-UFG** Team) and the paper "Domain Specific Wav2vec 2.0 Fine-tuning For The SE&R 2022 Challenge", based on the Edresson's repository [Wav2Vec-Wrapper](https://github.com/Edresson/Wav2Vec-Wrapper).
+This repository presents the code used for the submition on the SE&R 2022 Challenge (**GPED-CEIA-UFG** Team) and the paper [Domain Specific Wav2vec 2.0 Fine-tuning For The SE&R 2022 Challenge](http://ceur-ws.org/Vol-3175/paper02.pdf), based on the Edresson's repository [Wav2Vec-Wrapper](https://github.com/Edresson/Wav2Vec-Wrapper).
 
 # Dependencies
 
