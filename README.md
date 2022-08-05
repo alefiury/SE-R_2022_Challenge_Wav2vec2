@@ -42,7 +42,11 @@ If you use this code for your research, please consider citing:
  author = {Alef Iury Siqueira Ferreira and Gustavo dos Reis Oliveira},
  pages = {09--14},
  url = {http://ceur-ws.org/Vol-3175/paper02.pdf},
- crossref = {SER},
+ year = 2022,
+ booktitle = {Proceedings of the Workshop on Automatic Speech Recognition for Spontaneous and Prepared Speech \& Speech Emotion Recognition in Portuguese
+ co-located with 15th edition of the International Conference on the Computational Processing of Portuguese (PROPOR 2022)},
+ editor = {Ricardo Marcacini and Arnaldo Candido Junior and Edresson Casanova}
+ eventdate = {2022-03-22}
 }
 ```
 
