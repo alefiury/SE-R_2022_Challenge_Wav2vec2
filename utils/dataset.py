@@ -292,9 +292,9 @@ class DataColletorTest:
         for wav_path in features:
             try:
                 if self.apply_dbfs_norm:
-                    # print('alalala')
                     # Audio is loaded in a byte array
                     sound = AudioSegment.from_file(wav_path)
+                    sound = sound.set_channels(1)
                     change_in_dBFS = self.target_dbfs - sound.dBFS
                     # Apply normalization
                     normalized_sound = sound.apply_gain(change_in_dBFS)
@@ -312,9 +312,11 @@ class DataColletorTest:
                 else:
                     # load wav
                     speech_array, sampling_rate = torchaudio.load(wav_path)
+                    speech_array = torch.mean(speech_array, dim=0, keepdim=True)
                 if sampling_rate != self.sampling_rate:
                     transform = torchaudio.transforms.Resample(sampling_rate, self.sampling_rate)
                     speech_array = transform(speech_array)
+                    sampling_rate = self.sampling_rate
 
                 speech_array = speech_array.squeeze().numpy()
                 input_tensor = self.processor(speech_array, sampling_rate=sampling_rate).input_values
